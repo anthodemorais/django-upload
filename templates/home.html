@@ -5,7 +5,7 @@
 {% block content %}
 {% if user.is_authenticated %}
   <h1>Hi {{ user.username }}!</h1>
-  <a href="{% url 'upload' %}">Upload a photo</a>
+  <button type="button" class="btn btn-primary"><a style="color:white;" href="{% url 'upload' %}">Upload a photo</a></button>
   <h2>Your photos</h2>
   {% for img in imgs %} 
     <div class="col-md-4"> 
@@ -14,9 +14,9 @@
     </div>
   {% endfor %}
   <br>
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
+  <button type="button" class="btn btn-danger"><a style="color:white;" href="{% url 'logout' %}">Log Out</a></button>
 {% else %}
   <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
+  <button type="button" class="btn btn-primary"><a style="color:white;" href="{% url 'login' %}">Log In</a></button>
 {% endif %}
 {% endblock %}
