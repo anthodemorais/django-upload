@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <h1>Hi {{ user.username }}!</h1>
+  <a href="{% url 'upload' %}">Upload a photo</a>
+  <h2>Your photos</h2>
+  {% for img in imgs %} 
+    <div class="col-md-4"> 
+      <p>{{ img.name }} : </p>
+      <img src="{{ img.document.url }}" class="img-responsive" style="width: 30%; margin-right: 10px;" /> 
+    </div>
+  {% endfor %}
+  <br>
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
